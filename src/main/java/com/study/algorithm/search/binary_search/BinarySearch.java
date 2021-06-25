@@ -39,4 +39,46 @@ public class BinarySearch {
         }
         throw new NoSuchElementException("can't find target.");
     }
+
+    public int lowerBoundary(int[] arr, int target) {
+//        if (arr[arr.length - 1] < target)
+//            throw new NoSuchElementException("can't find target.");
+        if (arr.length == 0)
+            throw new IndexOutOfBoundsException("length is zero.");
+
+        int start = 0;
+        int end = arr.length;
+        int mid;
+
+        while (start < end) {
+            mid = (start + end) / 2;
+            if (target <= arr[mid]) {
+                end = mid;
+            }else {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }
+
+    public int upperBoundary(int[] arr, int target) {
+//        if (target < arr[0] || arr[arr.length - 1] < target)
+//            throw new NoSuchElementException("can't find target.");
+        if (arr.length == 0)
+            throw new IndexOutOfBoundsException("length is zero.");
+
+        int start = 0;
+        int end = arr.length;
+        int mid;
+
+        while (start < end) {
+            mid = (start + end) / 2;
+            if (arr[mid] <= target) {
+                start = mid + 1;
+            }else {
+                end = mid;
+            }
+        }
+        return start;
+    }
 }
